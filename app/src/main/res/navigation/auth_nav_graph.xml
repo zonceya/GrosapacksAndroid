@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <!-- Login Fragment -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.grosapacks.ui.login.LoginFragment"
+        tools:layout="@layout/fragment_login">
+
+        <!-- Login -> Signup -->
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+
+        <!--  Login -> OTP -->
+        <action
+            android:id="@+id/action_loginFragment_to_otpFragment"
+            app:destination="@id/otpFragment" />
+    </fragment>
+
+    <!-- Signup Fragment -->
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.grosapacks.ui.signup.SignUpFragment"
+        tools:layout="@layout/fragment_sign_up">
+
+        <!-- Signup -> Login -->
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+
+        <!-- ✅ Signup -> OTP -->
+        <action
+            android:id="@+id/action_signUpFragment_to_otpFragment"
+            app:destination="@id/otpFragment" />
+    </fragment>
+
+    <!-- OTP Fragment -->
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.example.grosapacks.ui.otp.OtpFragment"
+        tools:layout="@layout/fragment_otp">
+
+        <!-- Optional: OTP -> Login (after success or if user presses back) -->
+        <action
+            android:id="@+id/action_otpFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
